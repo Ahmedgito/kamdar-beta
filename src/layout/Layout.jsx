@@ -1,6 +1,8 @@
 import Footer from './foooter/Footer';
 import Navbar from './navbar/Navbar';
 
+import Logo from "../../assets/home/logo.png";
+
 const Layout = ({ children, setPage }) => {
   return (
     <div className="min-h-screen bg-gray-100">
