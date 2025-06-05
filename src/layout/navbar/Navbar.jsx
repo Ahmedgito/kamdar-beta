@@ -43,7 +43,7 @@ const Navbar = ({ setPage }) => {
     return (
         <>
             {/* Hamburger Button */}
-            <div className="md:hidden fixed top-6 right-6 z-[1100]">
+            <div className="md:hidden fixed top-3 right-6 z-[1100]">
                 <button onClick={() => setIsOpen(prev => !prev)} className="focus:outline-none">
                     <Hamburger toggled={isOpen} color="#fff" size={24} />
                 </button>
