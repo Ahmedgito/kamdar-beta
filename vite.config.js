@@ -7,5 +7,5 @@ export default defineConfig({
   plugins: [react(),
   tailwindcss()
   ],
-  base:"/kamdar-beta/"
+  base:"/kamdar-beta/",
 })
