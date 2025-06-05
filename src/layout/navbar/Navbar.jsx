@@ -42,9 +42,11 @@ const Navbar = ({ setPage }) => {
 
     return (
         <>
-            {/* Hamburger Icon - Always on Top */}
+            {/* Hamburger Button */}
             <div className="md:hidden fixed top-6 right-6 z-[1100]">
-                <Hamburger toggled={isOpen} toggle={setIsOpen} color="#fff" size={24} />
+                <button onClick={() => setIsOpen(prev => !prev)} className="focus:outline-none">
+                    <Hamburger toggled={isOpen} color="#fff" size={24} />
+                </button>
             </div>
 
             {/* Navbar */}
@@ -61,30 +63,28 @@ const Navbar = ({ setPage }) => {
                     </motion.div>
 
                     {/* Desktop Menu */}
-                   <div className="hidden md:flex gap-8 text-white font-lexend text-nav tracking-tightest font-[350]">
-  {menuItems.map((item, index) => (
-    <motion.button
-      key={item.key}
-      custom={index}
-      variants={linkVariants}
-      initial="hidden"
-      animate="visible"
-      whileHover={{ scale: 1.05, opacity: 0.9 }}
-      whileTap={{ scale: 0.95 }}
-      onClick={() => setPage(item.key)}
-      className="group relative transition-all duration-300"
-    >
-      <span className="relative">
-        {item.name}
-        <span
-          className="absolute left-0 -bottom-1 h-[2px] w-0 bg-[#FCE07D] transition-all duration-300 group-hover:w-full"
-        />
-      </span>
-    </motion.button>
-  ))}
-</div>
+                    <div className="hidden md:flex gap-8 text-white font-lexend text-nav tracking-tightest font-[350]">
+                        {menuItems.map((item, index) => (
+                            <motion.button
+                                key={item.key}
+                                custom={index}
+                                variants={linkVariants}
+                                initial="hidden"
+                                animate="visible"
+                                whileHover={{ scale: 1.05, opacity: 0.9 }}
+                                whileTap={{ scale: 0.95 }}
+                                onClick={() => setPage(item.key)}
+                                className="group relative transition-all duration-300"
+                            >
+                                <span className="relative">
+                                    {item.name}
+                                    <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-[#FCE07D] transition-all duration-300 group-hover:w-full" />
+                                </span>
+                            </motion.button>
+                        ))}
+                    </div>
 
-                    {/* Contact Button (Desktop Only) */}
+                    {/* Contact Button (Desktop) */}
                     <motion.div
                         className="flex-shrink-0 hidden md:block"
                         initial={{ opacity: 0, scale: 0.95 }}
@@ -120,7 +120,7 @@ const Navbar = ({ setPage }) => {
                             onClick={() => setIsOpen(false)}
                         />
 
-                        {/* Drawer */}
+                        {/* Drawer Panel */}
                         <Dialog.Panel
                             as={motion.div}
                             key="drawer"
@@ -129,6 +129,7 @@ const Navbar = ({ setPage }) => {
                             exit={{ x: '100%' }}
                             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                             className="fixed right-0 top-0 h-full w-64 backdrop-blur-md bg-[#0e0e0e] z-[101] shadow-lg"
+                            onClick={(e) => e.stopPropagation()} // Prevent close on drawer tap
                         >
                             <motion.div
                                 className="flex flex-col justify-center h-full px-6 gap-6"
@@ -159,6 +160,7 @@ const Navbar = ({ setPage }) => {
                                         {item.name}
                                     </motion.button>
                                 ))}
+
                                 <motion.button
                                     variants={linkVariants}
                                     onClick={() => {

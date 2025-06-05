@@ -27,7 +27,7 @@ const Section3 = () => {
           <motion.h2
             variants={fadeUp(0)}
             style={{ fontFamily: 'Luxerie' }}
-            className="text-3xl text-center m-auto md:text-left md:m-0 sm:text-4xl md:text-6xl font-normal tracking-tight"
+            className="text-5xl md:text-6xl text-center m-auto md:text-left md:m-0   font-normal tracking-tight"
           >
             OUR PROJECTS
           </motion.h2>

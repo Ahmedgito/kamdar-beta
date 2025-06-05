@@ -16,7 +16,7 @@ const fadeUp = (delay = 0) => ({
 const Section5 = () => {
   return (
     <section
-      className="relative w-full h-screen bg-black overflow-hidden flex items-center justify-center"
+      className="relative w-full h-[50vh] md:h-screen bg-black overflow-hidden flex items-center justify-center"
       style={{
         backgroundImage: `url(${Bg})`,
         backgroundSize: "cover",
